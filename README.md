@@ -1,6 +1,6 @@
 # International Color News
 Artificial news creator based on gpt-3.
-Url: 
+Url: https://internationalcolornews.diplabs.app/
 
 ## Tech
 - Deployment: Cloud RUN
