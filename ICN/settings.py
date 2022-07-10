@@ -20,7 +20,8 @@ DEBUG = False
 ALLOWED_HOSTS = ['internationalcolornews-vpcuqkwkfq-ew.a.run.app', 'localhost', 'internationalcolornews.diplabs.app']
 
 # # https://stackoverflow.com/questions/29573163/django-admin-login-suddenly-demanding-csrf-token
-# CSRF_TRUSTED_ORIGINS=['https://*.securecode.diplabs.app']
+# # https://stackoverflow.com/questions/29573163/django-admin-login-suddenly-demanding-csrf-token
+CSRF_TRUSTED_ORIGINS=['https://*.internationalcolornews.diplabs.app/', 'https://*.internationalcolornews-vpcuqkwkfq-ew.a.run.app']
 
 
 # Application definition
