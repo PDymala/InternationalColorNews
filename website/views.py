@@ -3,7 +3,7 @@ import random
 import openai
 from django.shortcuts import render
 from django.utils import timezone
-
+from .models import  Article
 import uti
 
 
@@ -73,6 +73,13 @@ def index(request):
     #        "called linalool. This compound is responsible for the color of lavender, " \
     #        "but the team's analysis showed that it can also create a deep purple color. " \
     #        "The team's discovery was published in the journal Nature Chemistry."
+
+
+    # send to db
+
+    art = Article(color= r_color_hex, color_title=name, article=poem)
+    art.save()
+
     return render(request, 'index.html', {
         'color_hex': r_color_hex,
         'color': r_color,

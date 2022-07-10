@@ -1,3 +1,8 @@
 from django.db import models
+import datetime
 
-# Create your models here.
+class Article(models.Model):
+    color = models.CharField('color', max_length=20)
+    color_title = models.CharField('Title', max_length=20)
+    article = models.CharField('article',max_length=2000)
+    add_date = models.DateTimeField('Add date', default=datetime.datetime.now())
