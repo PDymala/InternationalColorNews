@@ -5,13 +5,13 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import  Article
 import uti
-
+import os
 
 # Create your views here.
 def index(request):
     words = ['university', 'professor', 'phd', 'scientists', 'machine learning', 'light bending',
              'start-up', 'cosmic', 'technology', 'computers', 'chemistry']
-    openai.api_key = uti.access_secret_version('projects/125510501046/secrets/paintme_gpt')
+    openai.api_key = str(os.environ.get('GPT', None))
     r_color = uti.random_color_rgb()
     r_color_hex = uti.rgb2hex(r_color[0], r_color[1], r_color[2])
 
@@ -77,7 +77,7 @@ def index(request):
 
     # send to db
 
-    art = Article(color= r_color_hex, color_title=name, article=poem)
+    art = Article(color= r_color_hex, color_title=name, article=poem, name_prompt=name_prompt, poem_prompt=poem_prompt)
     art.save()
 
     return render(request, 'index.html', {
@@ -89,3 +89,5 @@ def index(request):
         'name_prompt': name_prompt,
         'poem_prompt': poem_prompt
     })
+
+

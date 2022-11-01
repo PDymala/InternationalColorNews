@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = uti.access_secret_version('projects/125510501046/secrets/paintme_SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -72,14 +72,16 @@ WSGI_APPLICATION = 'ICN.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
-        'ENGINE': uti.access_secret_version('projects/125510501046/secrets/wdymbh_engine'),
-        'NAME': uti.access_secret_version('projects/125510501046/secrets/icn_NAME'),
-        'USER': uti.access_secret_version('projects/125510501046/secrets/wdymbh_user'),
-        'PASSWORD': uti.access_secret_version('projects/125510501046/secrets/wdymbh_password'),
-        'HOST': uti.access_secret_version('projects/125510501046/secrets/wdymbh_host'),   # Or an IP Address that your DB is hosted on
-        'PORT': uti.access_secret_version('projects/125510501046/secrets/wdymbh_port'),
+        'ENGINE': str(os.environ.get('DB_ENGINE', None)),
+        'NAME': str(os.environ.get('DB_NAME', None)),
+        'USER': str(os.environ.get('DB_USER', None)),
+        'PASSWORD': str(os.environ.get('DB_PASSWORD', None)),
+        'HOST': str(os.environ.get('DB_HOST', None)),
+        'PORT': str(os.environ.get('DB_PORT', None))
     }
 }
 
