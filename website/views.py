@@ -47,13 +47,13 @@ def index(request):
         model="text-davinci-002",
         prompt= poem_prompt,
         temperature=0.7,
-        max_tokens=256,
+        max_tokens=128,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
     )
 
-    poem = poem_response['choices'][0]['text']
+    poem = poem_response['choices'][0]['text'] + "..."
 
     # name_prompt = "Give a name for color ..."
     # poem_prompt = "write an article about..."

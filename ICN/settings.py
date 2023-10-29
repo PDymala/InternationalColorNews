@@ -73,17 +73,27 @@ WSGI_APPLICATION = 'ICN.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 
+#Temporary change to local database for cost saving
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': str(os.environ.get('DB_ENGINE', None)),
+#         'NAME': str(os.environ.get('DB_NAME', None)),
+#         'USER': str(os.environ.get('DB_USER', None)),
+#         'PASSWORD': str(os.environ.get('DB_PASSWORD', None)),
+#         'HOST': str(os.environ.get('DB_HOST', None)),
+#         'PORT': str(os.environ.get('DB_PORT', None))
+#     }
+# }
 
 DATABASES = {
     'default': {
-        'ENGINE': str(os.environ.get('DB_ENGINE', None)),
-        'NAME': str(os.environ.get('DB_NAME', None)),
-        'USER': str(os.environ.get('DB_USER', None)),
-        'PASSWORD': str(os.environ.get('DB_PASSWORD', None)),
-        'HOST': str(os.environ.get('DB_HOST', None)),
-        'PORT': str(os.environ.get('DB_PORT', None))
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
 
 
 # Password validation
